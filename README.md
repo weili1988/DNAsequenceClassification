@@ -1,5 +1,4 @@
 # DNAsequenceClassification
-Deep CNN Implemented on Fully Homomophic Encrypted Data
 ====================
 
 Overview
