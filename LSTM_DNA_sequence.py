@@ -35,7 +35,7 @@ def buildModel(nb_lstm, nbTdDense):
     model.add(Dropout(0.5))
     
     model.add(Flatten())
-    model.add(Dense(3, activation= 'softmax'))
+    model.add(Dense(3, activation= 'sigmoid'))
     return model
 
 # data preprocessing, convert 'AGCT' to 1 2 3 4
@@ -103,7 +103,7 @@ if cv:
         Y_train = np_utils.to_categorical(Y[train])
         Y_test_cv = np_utils.to_categorical(Y[test]) #y test in cross validation
         model = buildModel(128, 64)
-        model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['categorical_accuracy'])
+        model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['categorical_accuracy'])
         #Fit the model
         model.fit(X[train], Y_train, epochs = nb_epochs, batch_size=16, verbose=0)
         # evaluate the model
